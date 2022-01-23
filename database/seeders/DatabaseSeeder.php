@@ -3,6 +3,12 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Database\Seeders\{
+    States, 
+    Users,
+    CategoriesTasks,
+    Tasks
+};
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +19,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call([
+            States::class,
+            Users::class,
+            CategoriesTasks::class,
+            Tasks::class
+        ]);
     }
 }
