@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Src\Home\Infrastructure\Controllers\HomeController;
 use Src\System\Infrastructure\Controllers\StatusController;
+use Src\CategorieTask\Infrastructure\Controllers\ShowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +28,6 @@ Route::get('v1', [HomeController::class, '__invoke']);
 Route::get('v1/status', [StatusController::class, '__invoke']);
 
 Route::group(['prefix' => 'v1'], function () {
-
+    // CATEGORIES TASKS //
+    Route::get('categories-tasks/{id}', [ShowController::class, '__invoke']);
 });

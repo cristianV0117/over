@@ -4,10 +4,6 @@ namespace Src\Shared\Infrastructure\Helpers;
 
 trait RouteHelper
 {
-    /**
-     * @param object $router
-     * @return array
-     */
     public function routes(object $router): array
     {
         $response = [];
@@ -18,7 +14,7 @@ trait RouteHelper
         });
         foreach ($routes as $key => $value) {
             $search = strpos($value, "_");
-            if (is_numeric($search) || is_null($value) || $value == $_ENV["DOMAIN_ROUTE"] . "/" . "sanctum/csrf-cookie") {
+            if (is_numeric($search) || is_null($value) || $value == $_ENV["DOMAIN_ROUTE"] . "/" . "sanctum/csrf-cookie" || str_contains($value, '{')) {
                 unset($routes[$key]);
             } else {
                 $response[] = $value;

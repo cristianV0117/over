@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace Src\Shared\Infrastructure\Controllers;
 
 use App\Http\Controllers\Controller as BaseController;
-use Src\Shared\Infrastructure\Helpers\JsonResponse;
+use Illuminate\Http\JsonResponse;
+use Src\Shared\Infrastructure\Helpers\JsonResponse as JsonHelper;
 
 class Controller extends BaseController
 {
-    use JsonResponse;
+    use JsonHelper;
 
     public $api;
 
@@ -23,14 +24,17 @@ class Controller extends BaseController
         bool $error,
         $response,
         ?array $dependencies
-    ): array
+    ): JsonResponse
     {
-        return $this->json(
-           $status,
-           $error,
-           $response,
-           $this->api,
-           $dependencies
+        return response()->json(
+            $this->json(
+                $status,
+                $error,
+                $response,
+                $this->api,
+                $dependencies
+            ),
+            $status
         );
     }
 }
