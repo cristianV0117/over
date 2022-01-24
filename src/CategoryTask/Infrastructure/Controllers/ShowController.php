@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Src\CategorieTask\Infrastructure\Controllers;
+namespace Src\CategoryTask\Infrastructure\Controllers;
 
 use Illuminate\Http\JsonResponse;
-use Src\CategorieTask\Application\UseCase\Find\FindCategorieTaskUseCase;
+use Src\CategoryTask\Application\UseCase\Find\FindCategoryTaskUseCase;
 use Src\Shared\Infrastructure\Controllers\Controller;
 
 final class ShowController extends Controller
 {
     private $useCase;
 
-    public function __construct(FindCategorieTaskUseCase $useCase)
+    public function __construct(FindCategoryTaskUseCase $useCase)
     {
         parent::__construct();
         $this->useCase = $useCase;

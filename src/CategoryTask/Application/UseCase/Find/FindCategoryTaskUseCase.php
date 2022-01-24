@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Src\CategorieTask\Application\UseCase\Find;
+namespace Src\CategoryTask\Application\UseCase\Find;
 
-class FindCategorieTaskUseCase
+class FindCategoryTaskUseCase
 {
     public function __construct()
     {
