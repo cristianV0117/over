@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Src\CategoryTask\Application\UseCase\Find;
 
 use Src\CategoryTask\Domain\Contracts\CategoryTaskRepositoryContract;
+use Src\Shared\Domain\Entity;
 
 class FindCategoryTaskUseCase
 {
@@ -15,7 +16,7 @@ class FindCategoryTaskUseCase
         $this->repository = $repository;
     }
 
-    public function __invoke(int $id)
+    public function __invoke(int $id): Entity
     {
         return $this->repository->findById($id);
     }

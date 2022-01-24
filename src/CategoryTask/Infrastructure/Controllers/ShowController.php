@@ -1,4 +1,7 @@
 <?php
+/**
+ * @author Cristian vasquez dev
+ */
 
 declare(strict_types=1);
 
@@ -10,6 +13,7 @@ use Src\Shared\Infrastructure\Controllers\Controller;
 
 final class ShowController extends Controller
 {
+
     private $useCase;
 
     public function __construct(FindCategoryTaskUseCase $useCase)
@@ -21,10 +25,6 @@ final class ShowController extends Controller
     public function __invoke(int $id): JsonResponse
     {
         $entity = $this->useCase->__invoke($id);
-        /*"id" => $entity->id()->value(),
-                "category" => $entity->category()->value(),
-                "description" => $entity->description()->value(),
-                "status" => $entity->status()->value()*/
         return $this->jsonResponse(
             200,
             false,
