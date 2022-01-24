@@ -1,8 +1,10 @@
 <?php
 
-namespace Src\Home\Controllers;
+declare(strict_types=1);
 
-use Src\Shared\Controllers\Controller;
+namespace Src\Home\Infrastructure\Controllers;
+
+use Src\Shared\Infrastructure\Controllers\Controller;
 
 final class HomeController extends Controller
 {
@@ -19,7 +21,7 @@ final class HomeController extends Controller
                 "home" => "Bienvenido",
                 "version" => "1.0.1"
             ],
-            null
+            ['current' => '']
         );
     }
 }

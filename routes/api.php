@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Src\Home\Controllers\HomeController;
+use Src\Home\Infrastructure\Controllers\HomeController;
+use Src\System\Infrastructure\Controllers\StatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +24,7 @@ Route::get('/', function () {
 });
 
 Route::get('v1', [HomeController::class, '__invoke']);
+Route::get('v1/status', [StatusController::class, '__invoke']);
 
 Route::group(['prefix' => 'v1'], function () {
 

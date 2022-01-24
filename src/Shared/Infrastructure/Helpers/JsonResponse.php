@@ -1,6 +1,8 @@
 <?php
 
-namespace Src\Shared\Helpers;
+declare(strict_types=1);
+
+namespace Src\Shared\Infrastructure\Helpers;
 
 trait JsonResponse
 {
@@ -15,7 +17,7 @@ trait JsonResponse
             "status"      => $status,
             "error"       => $error,
             "message"     => $response,
-            "current_url" => $domain . $dependencies
+            "current_url" => $domain . $dependencies['current']
         ];
     }
 }

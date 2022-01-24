@@ -1,9 +1,11 @@
 <?php
 
-namespace Src\Shared\Controllers;
+declare(strict_types=1);
+
+namespace Src\Shared\Infrastructure\Controllers;
 
 use App\Http\Controllers\Controller as BaseController;
-use Src\Shared\Helpers\JsonResponse;
+use Src\Shared\Infrastructure\Helpers\JsonResponse;
 
 class Controller extends BaseController
 {
