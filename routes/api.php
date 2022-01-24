@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Src\Home\Infrastructure\Controllers\HomeController;
 use Src\System\Infrastructure\Controllers\StatusController;
-use Src\CategorieTask\Infrastructure\Controllers\ShowController;
+use Src\CategoryTask\Infrastructure\Controllers\ShowController;
 
 /*
 |--------------------------------------------------------------------------

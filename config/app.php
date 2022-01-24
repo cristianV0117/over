@@ -175,6 +175,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // DDD //
+        \Src\Shared\Infrastructure\Services\CategoryTaskService::class
+
     ],
 
     /*

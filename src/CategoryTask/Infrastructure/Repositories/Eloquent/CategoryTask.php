@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\CategorieTask\Infrastructure\Repositories\Eloquent;
+namespace Src\CategoryTask\Infrastructure\Repositories\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 

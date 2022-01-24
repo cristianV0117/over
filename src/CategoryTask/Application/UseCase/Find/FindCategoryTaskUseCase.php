@@ -4,14 +4,19 @@ declare(strict_types=1);
 
 namespace Src\CategoryTask\Application\UseCase\Find;
 
+use Src\CategoryTask\Domain\Contracts\CategoryTaskRepositoryContract;
+
 class FindCategoryTaskUseCase
 {
-    public function __construct()
+    private $repository;
+
+    public function __construct(CategoryTaskRepositoryContract $repository)
     {
+        $this->repository = $repository;
     }
 
     public function __invoke(int $id): int
     {
-        return $id;
+        return $this->repository->findById($id);
     }
 }
