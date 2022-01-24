@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Src\Home\Infrastructure\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Router;
 use Src\Shared\Infrastructure\Controllers\Controller;
 use Src\Shared\Infrastructure\Helpers\RouteHelper;
@@ -11,11 +12,12 @@ use Src\Shared\Infrastructure\Helpers\RouteHelper;
 final class HomeController extends Controller
 {
     use RouteHelper;
+
     /**
      * @param Router $router
-     * @return array
+     * @return JsonResponse
      */
-    public function __invoke(Router $router): array
+    public function __invoke(Router $router): JsonResponse
     {
         return $this->jsonResponse(
             200,

@@ -15,7 +15,7 @@ class FindCategoryTaskUseCase
         $this->repository = $repository;
     }
 
-    public function __invoke(int $id): int
+    public function __invoke(int $id)
     {
         return $this->repository->findById($id);
     }

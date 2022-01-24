@@ -20,12 +20,15 @@ final class ShowController extends Controller
 
     public function __invoke(int $id): JsonResponse
     {
+        $entity = $this->useCase->__invoke($id);
+        /*"id" => $entity->id()->value(),
+                "category" => $entity->category()->value(),
+                "description" => $entity->description()->value(),
+                "status" => $entity->status()->value()*/
         return $this->jsonResponse(
             200,
             false,
-            [
-                "id" => $this->useCase->__invoke($id)
-            ],
+            $entity->toArray(),
             [
                 "current" => '/categories-tasks/' . $id
             ]
