@@ -10,7 +10,7 @@ use Src\CategoryTask\Domain\ValueObjects\CategoryTaskId;
 use Src\CategoryTask\Domain\ValueObjects\CategoryTaskStatus;
 use Src\CategoryTask\Infrastructure\Repositories\Eloquent\CategoryTask as Model;
 
-class EloquentRepository implements CategoryTaskRepositoryContract
+class Repository implements CategoryTaskRepositoryContract
 {
     private $model;
 
@@ -19,14 +19,32 @@ class EloquentRepository implements CategoryTaskRepositoryContract
         $this->model = $model;
     }
 
-    public function findById(int $id): CategoryTask
+    public function findById(CategoryTaskId $id): ?CategoryTask
     {
-        $model = $this->model->find($id)->toArray();
+        $model = $this->model->find($id->value())->toArray();
         return new CategoryTask(
             new CategoryTaskId($model["id"]),
             new CategoryTaskCategory($model["category"]),
             new CategoryTaskDescription($model["description"]),
             new CategoryTaskStatus($model["status"])
         );
+    }
+
+    public function findAll(): array
+    {
+        $objects = [];
+
+        $categoriesTasks = $this->model->all();
+
+        foreach ($categoriesTasks as $categorie) {
+            $objects[] = new CategoryTask(
+                new CategoryTaskId($categorie->id),
+                new CategoryTaskCategory($categorie->category),
+                new CategoryTaskDescription($categorie->description),
+                new CategoryTaskStatus($categorie->status)
+            );
+        }
+
+        return $objects;
     }
 }

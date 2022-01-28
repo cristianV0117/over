@@ -10,6 +10,6 @@ class CategoryTaskService extends ServiceProvider
     {
         $this->app->when(\Src\CategoryTask\Application\UseCase\Find\FindCategoryTaskUseCase::class)
             ->needs(\Src\CategoryTask\Domain\Contracts\CategoryTaskRepositoryContract::class)
-            ->give(\Src\CategoryTask\Infrastructure\Repositories\Eloquent\EloquentRepository::class);
+            ->give(\Src\CategoryTask\Infrastructure\Repositories\Eloquent\Repository::class);
     }
 }
