@@ -12,7 +12,7 @@ class Controller extends BaseController
 {
     use JsonHelper;
 
-    public $api;
+    private $api;
 
     public function __construct()
     {

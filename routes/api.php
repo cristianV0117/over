@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Src\Home\Infrastructure\Controllers\HomeController;
-use Src\System\Infrastructure\Controllers\StatusController;
-use Src\CategoryTask\Infrastructure\Controllers\{ShowController, IndexController};
+use Src\Application\Home\Infrastructure\Controllers\HomeController;
+use Src\Status\System\Infrastructure\Controllers\StatusController;
+use Src\Application\CategoryTask\Infrastructure\Controllers\{ShowController, IndexController};
 
 /*
 |--------------------------------------------------------------------------

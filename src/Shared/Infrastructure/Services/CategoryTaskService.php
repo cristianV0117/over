@@ -8,8 +8,8 @@ class CategoryTaskService extends ServiceProvider
 {
     public function register()
     {
-        $this->app->when(\Src\CategoryTask\Application\UseCase\Find\FindCategoryTaskUseCase::class)
-            ->needs(\Src\CategoryTask\Domain\Contracts\CategoryTaskRepositoryContract::class)
-            ->give(\Src\CategoryTask\Infrastructure\Repositories\Eloquent\Repository::class);
+        $this->app->when(\Src\Application\CategoryTask\Application\UseCase\Find\FindCategoryTaskUseCase::class)
+            ->needs(\Src\Application\CategoryTask\Domain\Contracts\CategoryTaskRepositoryContract::class)
+            ->give(\Src\Application\CategoryTask\Infrastructure\Repositories\Eloquent\Repository::class);
     }
 }
