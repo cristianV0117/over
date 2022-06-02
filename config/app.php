@@ -175,6 +175,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // USER ROUTES SERVICE //
+        \Src\Application\User\Infrastructure\Services\RouteServiceProvider::class,
+        // USER DEPENDENCY SERVICE //
+        \Src\Application\User\Infrastructure\Services\DependencyServiceProvider::class,
         // DDD //
         \Src\Shared\Infrastructure\Services\CategoryTaskService::class
 
