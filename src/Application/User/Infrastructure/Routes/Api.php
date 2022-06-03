@@ -3,4 +3,5 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', Store::class);
+Route::get('/', Index::class);
+Route::post('/', Store::class);

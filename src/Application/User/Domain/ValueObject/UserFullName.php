@@ -6,12 +6,12 @@ final class UserFullName
 {
     private $value;
 
-    public function __construct(array $value)
+    public function __construct(?array $value)
     {
         $this->value = $value;
     }
 
-    public function value(): array
+    public function value(): ?array
     {
         return $this->value;
     }

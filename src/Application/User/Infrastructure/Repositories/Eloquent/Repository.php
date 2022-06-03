@@ -3,6 +3,7 @@
 namespace Src\Application\User\Infrastructure\Repositories\Eloquent;
 
 use Src\Application\User\Domain\Contracts\UserRepository;
+use Src\Application\User\Domain\Exceptions\StoreFailed;
 use Src\Application\User\Domain\ValueObject\UserId;
 use Src\Application\User\Domain\User;
 use Src\Application\User\Domain\ValueObject\UserCellphone;
@@ -51,5 +52,53 @@ class Repository implements UserRepository
         }
 
         return $objects;
+    }
+
+    public function save(
+        UserUserName $userName,
+        UserFullName $name,
+        UserEmail $email,
+        UserCellphone $cellphone,
+        UserPassword $password,
+        UserStateId $stateId,
+        UserTimeStamp $timeStamp
+    ): ?User
+    {
+        $response = $this->model->create([
+            'user_name' => $userName->value(),
+            'first_name' => $name->firstName(),
+            'second_name' => $name->secondLastName(),
+            'first_last_name' => $name->firstLastName(),
+            'second_last_name' => $name->secondLastName(),
+            'email' => $email->value(),
+            'cellphone' => $cellphone->value(),
+            'password' => $password->value(),
+            'state_id' => $stateId->value(),
+            'createdAt' => $timeStamp->createdAt(),
+            'updatedAt' => $timeStamp->updatedAt()
+        ]);
+
+        if (!$response) {
+            throw new StoreFailed("Ha fallado el guardado de la información", 500);
+        }
+        
+        return new User(
+            new UserId($response->id),
+            new UserUserName($response->user_name),
+            new UserFullName([
+                "firstName" => $response->first_name,
+                "secondName" => $response->second_name,
+                "firstLastName" => $response->first_last_name,
+                "secondLastName" => $response->second_last_name
+            ]),
+            new UserEmail($response->email),
+            new UserCellphone($response->cellphone),
+            new UserPassword(null),
+            new UserStateId($response->state_id),
+            new UserTimeStamp([
+                "createdAt" => $response->created_at,
+                "updatedAt" => $response->updated_at
+            ])
+        );
     }
 }

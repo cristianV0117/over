@@ -4,36 +4,32 @@ declare(strict_types=1);
 
 namespace Src\Application\User\Infrastructure\Controllers;
 
-use Src\Application\User\Application\Find\FindAllUsers;
+use Src\Application\User\Application\Save\SaveUser;
+use Src\Application\User\Infrastructure\Request\StoreRequest;
 use Src\Shared\Infrastructure\Controllers\Controller;
+use Src\Shared\Infrastructure\Helpers\TimeFormater;
 
 final class Store extends Controller
 {
-    private $findAllUsersUseCase;
+    use TimeFormater;
 
-    public function __construct(FindAllUsers $findAllUsersUseCase)
+    private $saveUserUseCase;
+
+    public function __construct(SaveUser $saveUserUseCase)
     {
         parent::__construct();
-        $this->findAllUsersUseCase = $findAllUsersUseCase;
+        $this->saveUserUseCase = $saveUserUseCase;
     }
 
-    public function __invoke()
+    public function __invoke(StoreRequest $request)
     {
-        $response = $this->findAllUsersUseCase->__invoke();
-
-        $serializeArray = array_map(function ($value) {
-            return $value->toArray();
-        }, $response);
+        $response = $this->saveUserUseCase->__invoke($request->all(), $this->now());
 
         return $this->jsonResponse(
-            200,
+            201,
             false,
-            [
-                $serializeArray
-            ],
-            [
-                "current" => '/users'
-            ]
+            $response->toArray(),
+            ["current" => null]
         );
     }
 }

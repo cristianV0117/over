@@ -17,5 +17,9 @@ final class DependencyServiceProvider extends ServiceProvider
             ->when(\Src\Application\User\Application\Find\FindAllUsers::class)
             ->needs(\Src\Application\User\Domain\Contracts\UserRepository::class)
             ->give(\Src\Application\User\Infrastructure\Repositories\Eloquent\Repository::class);
+            $this->app
+            ->when(\Src\Application\User\Application\Save\SaveUser::class)
+            ->needs(\Src\Application\User\Domain\Contracts\UserRepository::class)
+            ->give(\Src\Application\User\Infrastructure\Repositories\Eloquent\Repository::class);
     }
 }
